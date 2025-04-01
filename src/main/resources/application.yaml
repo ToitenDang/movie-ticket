@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /dang
+
+spring:
+  main:
+    banner-mode: off
+
+  datasource:
+    url: ${DBMS_CONNECTION:jdbc:mysql://localhost:3306/movie_ticket}
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+    username: ${DBMS_USERNAME:root}
+    password: ${DBMS_PASSWORD:2503}
