@@ -4,7 +4,7 @@ import com.dang.Movie_Ticket.dto.request.AuthenticationRequest;
 import com.dang.Movie_Ticket.dto.request.ResponseData;
 import com.dang.Movie_Ticket.dto.request.ResponseError;
 import com.dang.Movie_Ticket.dto.response.AuthenticationResponse;
-import com.dang.Movie_Ticket.exception.ResourceNotFoundException;
+import com.dang.Movie_Ticket.exception.AppException;
 import com.dang.Movie_Ticket.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class AuthenticationController {
                   .authenticated(authenticationService.authenticate(request))
                   .build();
           return new ResponseData<>(HttpStatus.OK.value(), "Login succeed", auth);
-      } catch (ResourceNotFoundException e){
+      } catch (AppException e){
           log.error("Error message {}", e.getMessage(), e.getCause());
           return new ResponseError(HttpStatus.BAD_REQUEST.value(), "Login failed");
       }

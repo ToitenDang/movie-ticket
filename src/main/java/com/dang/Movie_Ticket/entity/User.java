@@ -6,6 +6,7 @@ import com.dang.Movie_Ticket.util.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -26,7 +27,7 @@ public class User extends AbstractEntity{
     private String password;
 
     @Column(name = "date_of_birth")
-    private Date dob;
+    private LocalDate dob;
 
     @Column(name = "phone")
     private String phone;
