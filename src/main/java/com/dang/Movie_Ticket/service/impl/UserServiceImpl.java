@@ -4,7 +4,8 @@ import com.dang.Movie_Ticket.dto.request.UserCreateDTO;
 import com.dang.Movie_Ticket.dto.response.PageResponse;
 import com.dang.Movie_Ticket.dto.response.UserResponseDTO;
 import com.dang.Movie_Ticket.entity.User;
-import com.dang.Movie_Ticket.exception.ResourceNotFoundException;
+import com.dang.Movie_Ticket.exception.AppException;
+import com.dang.Movie_Ticket.exception.ErrorCode;
 import com.dang.Movie_Ticket.mapper.UserMapper;
 import com.dang.Movie_Ticket.repository.UserRepository;
 import com.dang.Movie_Ticket.service.UserService;
@@ -13,7 +14,6 @@ import com.dang.Movie_Ticket.util.enums.Role;
 import com.dang.Movie_Ticket.util.enums.UserStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.mapstruct.control.MappingControl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         if (userRepository.existsByEmail(request.getEmail()))
-            throw new ResourceNotFoundException("User existed");
+            throw new AppException(ErrorCode.EMAIL_EXISTED);
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
@@ -129,6 +129,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private User getUserById(String userId){
-        return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("user not found!"));
+        return userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
     }
 }
