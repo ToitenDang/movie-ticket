@@ -1,17 +1,10 @@
 package com.dang.Movie_Ticket.dto.request;
-
-import com.dang.Movie_Ticket.util.enums.MembershipLevel;
-import com.dang.Movie_Ticket.util.enums.UserStatus;
 import com.dang.Movie_Ticket.validator.DobConstraint;
 import com.dang.Movie_Ticket.validator.ValidatePattern;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 public class UserCreateDTO {
