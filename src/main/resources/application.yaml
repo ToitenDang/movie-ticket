@@ -12,3 +12,8 @@ spring:
     driverClassName: "com.mysql.cj.jdbc.Driver"
     username: ${DBMS_USERNAME:root}
     password: ${DBMS_PASSWORD:2503}
+
+cloudinary:
+  cloud_name: dkd0crnyd
+  api_key: ${API_KEY}
+  api_secret: ${API_SECRET}

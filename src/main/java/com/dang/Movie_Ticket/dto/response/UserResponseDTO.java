@@ -13,4 +13,6 @@ public class UserResponseDTO {
     private String email;
     private Date dob;
     private String phone;
+    private String role;
+    private String status;
 }

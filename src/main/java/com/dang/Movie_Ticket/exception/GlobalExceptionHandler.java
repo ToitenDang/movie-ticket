@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.util.Map;
 import java.util.Objects;
@@ -37,6 +38,18 @@ public class GlobalExceptionHandler {
 //        responseData.setMessage(errorCode.getMessage());
 
         log.error("AppException error: {}", exception.getMessage(), exception.getCause());
+        return ResponseEntity.status(errorCode.getStatusCode()).body(
+                ResponseData.builder()
+                        .statusCode(errorCode.getCode())
+                        .message(errorCode.getMessage())
+                        .build()
+        );
+    }
+
+    @ExceptionHandler(value = IOException.class)
+    public ResponseEntity<ResponseData> handlingIOException(IOException exception){
+        ErrorCode errorCode = ErrorCode.UPLOAD_FILE_FAILED;
+        log.error("IOException error: {}", exception.getMessage(), exception.getCause());
         return ResponseEntity.status(errorCode.getStatusCode()).body(
                 ResponseData.builder()
                         .statusCode(errorCode.getCode())

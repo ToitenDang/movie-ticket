@@ -59,11 +59,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(String userId, UserCreateDTO request) {
         User user = getUserById(userId);
-        user.setName(request.getName());
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setDob(request.getDob());
-        user.setPhone(request.getPhone());
+//        user.setName(request.getName());
+//        user.setEmail(request.getEmail());
+//        user.setPassword(request.getPassword());
+//        user.setDob(request.getDob());
+//        user.setPhone(request.getPhone());
+        userMapper.updateUser(user, request);
 
         userRepository.save(user);
         log.info("Update user with {}", userId);
