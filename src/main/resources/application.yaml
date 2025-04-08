@@ -6,14 +6,24 @@ server:
 spring:
   main:
     banner-mode: off
-
   datasource:
     url: ${DBMS_CONNECTION:jdbc:mysql://localhost:3306/movie_ticket}
     driverClassName: "com.mysql.cj.jdbc.Driver"
     username: ${DBMS_USERNAME:root}
     password: ${DBMS_PASSWORD:2503}
 
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+
 cloudinary:
   cloud_name: dkd0crnyd
   api_key: ${API_KEY}
   api_secret: ${API_SECRET}
+
+
+seatsPerRow: 20
