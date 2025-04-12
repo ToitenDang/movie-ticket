@@ -18,6 +18,7 @@ public enum ErrorCode {
     THEATER_STATUS_INVALID(1004, "Only update when theater is in maintenance status!", HttpStatus.BAD_REQUEST),
     USER_NOT_EXISTED(1005, "User not existed!", HttpStatus.NOT_FOUND),
     MOVIE_NOT_EXISTED(1005, "Movie not existed!", HttpStatus.NOT_FOUND),
+    SHOWTIME_NOT_EXISTED(1005, "Showtime not existed!", HttpStatus.NOT_FOUND),
     THEATER_NOT_EXISTED(1005, "Theater not existed!", HttpStatus.NOT_FOUND),
     UNAUTHENTICATED(1006, "Unauthenticated!", HttpStatus.UNAUTHORIZED),
     UNAUTHORIZED(1007, "You do not have permission!", HttpStatus.FORBIDDEN),

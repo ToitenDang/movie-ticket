@@ -49,7 +49,7 @@ public class TheaterServiceImpl implements TheaterService {
                 .totalSeat(theater.getTotalSeats())
                 .seatsPerRow(seatsPerRow)
                 .build();
-        this.seatService.updateSeat(seatRequest);
+        this.seatService.createSeat(seatRequest);
 
         log.info("New Theater have id: {}", theater.getId());
         return theater.getId();
