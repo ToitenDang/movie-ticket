@@ -5,21 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class MovieDetailRespone {
+public class FoodResponse {
     private String id;
-    private String title;
-    private String genre;
-    private int duration;
-    private float rating;
-    private LocalDate releaseDate;
-    private String synopsis;
-    private String poster;
+    private String name;
+    private int price;
+    private int sold;
+    private String image;
     private String status;
 }

@@ -26,6 +26,9 @@ public class ShowTime extends AbstractEntity{
     @JoinColumn(name = "theater_id")
     private Theater theater;
 
+    @Column(name = "price")
+    private int price;
+
     @Column(name = "start_time")
     private LocalDateTime startTime;
 
