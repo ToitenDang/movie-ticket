@@ -2,7 +2,7 @@ package com.dang.Movie_Ticket.service.impl;
 
 import com.dang.Movie_Ticket.dto.request.MovieCreationRequest;
 import com.dang.Movie_Ticket.dto.request.MovieUpdateRequest;
-import com.dang.Movie_Ticket.dto.response.MovieDetailRespone;
+import com.dang.Movie_Ticket.dto.response.MovieDetailResponse;
 import com.dang.Movie_Ticket.dto.response.PageResponse;
 import com.dang.Movie_Ticket.entity.Movie;
 import com.dang.Movie_Ticket.exception.AppException;
@@ -56,7 +56,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieDetailRespone getMovie(String movieId) {
+    public MovieDetailResponse getMovie(String movieId) {
         return movieMapper.toMovieResponse(getMovieById(movieId));
     }
 

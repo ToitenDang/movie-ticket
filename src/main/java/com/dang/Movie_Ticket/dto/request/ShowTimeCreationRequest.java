@@ -11,5 +11,6 @@ import java.time.LocalDateTime;
 public class ShowTimeCreationRequest {
     private String movieId;
     private String theaterId;
+    private int price;
     private LocalDateTime startTime;
 }

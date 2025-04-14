@@ -11,8 +11,9 @@ import java.time.LocalDateTime;
 @Builder
 public class ShowTimeDetailResponse {
     private String id;
-    private MovieDetailRespone movie;
+    private MovieDetailResponse movie;
     private TheaterResponse theater;
+    private int price;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String status;
