@@ -68,4 +68,16 @@ public class MovieController {
         this.movieService.deleteMovie(movieId);
         return new ResponseData<>(HttpStatus.NO_CONTENT.value(), "Delete movie succeed");
     }
+
+    @GetMapping("/search")
+    public ResponseData<?> searchMovie(@RequestParam(defaultValue = "0", required = false) int pageNo,
+                                       @Min(1) @RequestParam(defaultValue = "20", required = false)
+                                       int pageSize,
+                                       @RequestParam(required = false) String sortBy,
+                                       @RequestParam(defaultValue = "") String keyword
+                                       ){
+        log.info("Search Movies");
+        return new ResponseData<>(HttpStatus.OK.value(), "Movie after search",
+                        this.movieService.searchMovie(pageNo, pageSize, sortBy, keyword));
+    }
 }

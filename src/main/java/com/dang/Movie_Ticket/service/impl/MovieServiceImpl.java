@@ -96,6 +96,41 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public PageResponse<?> searchMovie(int pageNo, int pageSize, String sortBy, String keyword) {
+        int p = 0;
+        if (pageNo > 0) {
+            p = pageNo - 1;
+        }
+
+        List<Sort.Order> sorts = new ArrayList<>();
+        // Nếu có điều kiện sắp xếp sortBy
+        if (StringUtils.hasLength(sortBy)) {
+            // điều kiện sort có 3 phần key_sort:asc|desc. với đk sort là bất kỳ field nào có trong entity
+            Pattern pattern = Pattern.compile("(\\w+?)(:)(.*)");
+
+            Matcher matcher = pattern.matcher(sortBy);
+            if (matcher.find()) {
+                if (matcher.group(3).equalsIgnoreCase("asc")) {
+                    sorts.add(new Sort.Order(Sort.Direction.ASC, matcher.group(1)));
+                } else {
+                    sorts.add(new Sort.Order(Sort.Direction.DESC, matcher.group(1)));
+
+                }
+            }
+        }
+        // Dùng Sort.by để sắp xếp theo thứ tự asc hay desc theo field truyền qua tham số sortBy
+        Pageable pageable = PageRequest.of(p, pageSize, Sort.by(sorts));
+        Page<Movie> movies = movieRepository.searchMovies(keyword, pageable);
+
+        return PageResponse.builder()
+                .pageNo(pageNo)
+                .pageSize(pageSize)
+                .totalPage(movies.getTotalPages())
+                .items(movies.stream().map(movieMapper::toMovieResponse))
+                .build();
+    }
+
+    @Override
     public void updateMovie(String movieId, MovieUpdateRequest request, MultipartFile file) throws IOException {
         Movie movie = getMovieById(movieId);
 //        movie.setTitle(request.getTitle());

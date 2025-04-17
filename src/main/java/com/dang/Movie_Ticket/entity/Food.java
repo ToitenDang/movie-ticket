@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "food")
 public class Food extends AbstractEntity{
     @Column(name = "name")
     private String name;
