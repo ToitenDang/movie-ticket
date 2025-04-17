@@ -14,6 +14,7 @@ public interface MovieService {
 
     MovieDetailResponse getMovie(String movieId);
     PageResponse<?> getAllMovies(int pageNo, int pageSize, String sortBy);
+    PageResponse<?> searchMovie(int pageNo, int pageSize, String sortBy, String keyword);
     void updateMovie(String movieId, MovieUpdateRequest request, MultipartFile file) throws IOException;
     void deleteMovie(String movieId);
     void changeStatus(String movieId, MovieStatus status);
