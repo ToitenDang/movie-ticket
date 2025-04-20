@@ -28,6 +28,11 @@ cloudinary:
 
 seatsPerRow: 20
 
+jwt:
+  signerKey: "h7FxX3w7j5lJ5X6P6IEDEG052ECmUocmpnNK3uNgOpL3SXlgwz/OnsgAWnGHR+K4"
+  valid-duration: 3600 #seconds
+  refreshable-duration: 360000 #seconds
+
 #  spring.jpa.show-sql=true
 #  spring.jpa.properties.hibernate.format_sql=true
 #  spring.jpa.properties.hibernate.use_sql_comments=true

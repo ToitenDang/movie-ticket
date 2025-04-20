@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class AuthenticationResponse {
-    private String token;
-    private boolean authenticated;
+public class IntrospectResponse {
+    private boolean valid;
 }
