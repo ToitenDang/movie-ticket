@@ -37,3 +37,17 @@ jwt:
 #  spring.jpa.properties.hibernate.format_sql=true
 #  spring.jpa.properties.hibernate.use_sql_comments=true
 #  logging.level.org.hibernate=DEBUG
+
+# Swagger
+openapi:
+  service:
+    api-docs: api-service
+    title: API document
+    version: 1.0.0
+    server: http://localhost:${server.port}/dang
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

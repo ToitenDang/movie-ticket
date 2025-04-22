@@ -58,6 +58,14 @@ public class UserController {
 
     }
 
+    @GetMapping("/myInfo")
+    public ResponseData<UserResponseDTO> getMyInfo() {
+        log.info("Get info of user");
+
+        return new ResponseData<>(HttpStatus.OK.value(), "User", userService.getMyInfo());
+
+    }
+
     @GetMapping()
     public ResponseData<?> getUsers(@RequestParam(defaultValue = "0", required = false) int pageNo,
                                     @Min(1) @RequestParam(defaultValue = "20", required = false) int pageSize,
