@@ -11,4 +11,5 @@ public interface ShowTimeSeatService {
     void createShowTimeSeat(String theaterId, ShowTime showTime);
     void changeShowTimeSeatStatus( String showTimeId, String seatId, SeatStatus status);
     List<ShowTimeSeatDetailResponse> findAllByShowTimeId(String showTimeId);
+    boolean isSeatStillReserve(String showtimeId, String seatId);
 }
