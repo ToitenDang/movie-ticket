@@ -95,6 +95,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--WebSocket-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+
 		<!--Dependency su dung swagger-->
 		<dependency>
 			<groupId>org.springdoc</groupId>

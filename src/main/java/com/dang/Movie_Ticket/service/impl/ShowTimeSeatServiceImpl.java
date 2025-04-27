@@ -70,4 +70,10 @@ public class ShowTimeSeatServiceImpl implements ShowTimeSeatService {
                     .build();
         }).toList();
     }
+
+    @Override
+    public boolean isSeatStillReserve(String showtimeId, String seatId) {
+        ShowTimeSeat seat = showTimeSeatRepository.findSeatByShowTimeIdAndSeatId(showtimeId, seatId);
+        return seat != null && SeatStatus.RESERVED.equals(seat.getStatus());
+    }
 }
