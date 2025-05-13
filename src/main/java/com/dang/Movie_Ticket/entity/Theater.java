@@ -1,6 +1,7 @@
 package com.dang.Movie_Ticket.entity;
 
 import com.dang.Movie_Ticket.util.enums.TheaterStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,7 @@ public class Theater extends AbstractEntity{
     private TheaterStatus status;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private Set<Seat> seats;
 
 }

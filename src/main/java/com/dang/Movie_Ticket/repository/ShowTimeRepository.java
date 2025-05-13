@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ShowTimeRepository extends JpaRepository<ShowTime, String> {
+    boolean existsById(String showtimeId);
 }

@@ -3,11 +3,14 @@ package com.dang.Movie_Ticket.entity;
 import com.dang.Movie_Ticket.util.enums.MembershipLevel;
 import com.dang.Movie_Ticket.util.enums.Role;
 import com.dang.Movie_Ticket.util.enums.UserStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.mapstruct.Mapper;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -44,4 +47,7 @@ public class User extends AbstractEntity{
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Order> orders;
 }
