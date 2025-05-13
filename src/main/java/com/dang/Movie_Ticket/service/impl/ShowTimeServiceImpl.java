@@ -117,7 +117,12 @@ public class ShowTimeServiceImpl implements ShowTimeService {
         log.info("Delete showtime");
     }
 
-    private ShowTime getShowTimeById(String showtimeId){
+    @Override
+    public boolean existById(String showtimeId) {
+        return this.showTimeRepository.existsById(showtimeId);
+    }
+
+    public ShowTime getShowTimeById(String showtimeId){
         return this.showTimeRepository.findById(showtimeId)
                 .orElseThrow(() -> new AppException(ErrorCode.SHOWTIME_NOT_EXISTED));
     }

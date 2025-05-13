@@ -4,6 +4,7 @@ import com.dang.Movie_Ticket.dto.request.OrderCreationRequest;
 import com.dang.Movie_Ticket.dto.request.ResponseData;
 import com.dang.Movie_Ticket.service.OrderService;
 import com.dang.Movie_Ticket.util.enums.OrderStatus;
+import jakarta.validation.constraints.Min;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +33,12 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseData<?> getOrders(){
+    public ResponseData<?> getOrders(@RequestParam(defaultValue = "0", required = false) int pageNo,
+                                     @Min(1) @RequestParam(defaultValue = "20", required = false) int pageSize,
+                                     @RequestParam(required = false) String sortBy){
         log.info("Get all order");
-        return new ResponseData<>(HttpStatus.OK.value(), "List orders", this.orderService.getOrders());
+        return new ResponseData<>(HttpStatus.OK.value(), "List orders",
+                this.orderService.getOrders(pageNo, pageSize, sortBy));
     }
 
     @GetMapping("/user-order/{userId}")

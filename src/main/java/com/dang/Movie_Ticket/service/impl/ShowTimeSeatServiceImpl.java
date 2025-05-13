@@ -59,6 +59,11 @@ public class ShowTimeSeatServiceImpl implements ShowTimeSeatService {
     }
 
     @Override
+    public void batchUpdateSeatStatus(String showTimeId, List<String> seatIds, SeatStatus status) {
+        this.showTimeSeatRepository.batchUpdateSeatStatus(showTimeId, seatIds, status);
+    }
+
+    @Override
     public List<ShowTimeSeatDetailResponse> findAllByShowTimeId(String showTimeId) {
         log.info("Get All Seat in ShowTime");
         List<ShowTimeSeat> seats = this.showTimeSeatRepository.findAllByShowTimeId(showTimeId);
@@ -75,5 +80,10 @@ public class ShowTimeSeatServiceImpl implements ShowTimeSeatService {
     public boolean isSeatStillReserve(String showtimeId, String seatId) {
         ShowTimeSeat seat = showTimeSeatRepository.findSeatByShowTimeIdAndSeatId(showtimeId, seatId);
         return seat != null && SeatStatus.RESERVED.equals(seat.getStatus());
+    }
+
+    @Override
+    public ShowTimeSeat findByShowTimeIdAndSeatId(String showTimeId, String seatId) {
+        return this.showTimeSeatRepository.findSeatByShowTimeIdAndSeatId(showTimeId, seatId);
     }
 }

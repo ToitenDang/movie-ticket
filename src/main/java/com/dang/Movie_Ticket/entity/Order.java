@@ -2,6 +2,7 @@ package com.dang.Movie_Ticket.entity;
 
 import com.dang.Movie_Ticket.util.enums.FoodStatus;
 import com.dang.Movie_Ticket.util.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,8 +16,10 @@ import java.util.List;
 @Entity
 @Table(name = "`order`")
 public class Order extends AbstractEntity{
-    @Column(name = "user_id")
-    private String userId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "total_price")
     private int totalPrice;
@@ -24,6 +27,10 @@ public class Order extends AbstractEntity{
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "show_time_id")
+    private ShowTime showTime;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;

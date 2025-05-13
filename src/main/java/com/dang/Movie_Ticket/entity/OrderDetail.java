@@ -33,7 +33,5 @@ public class OrderDetail extends AbstractEntity{
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "show_time_id")
-    private String showTimeId;
 
 }

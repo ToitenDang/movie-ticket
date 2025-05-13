@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
     public PageResponse<?> getUsers(int pageNo, int pageSize, String sortBy) {
         int p = 0;
         if(pageNo > 0){
-            p = pageNo+1;
+            p = pageNo-1;
         }
         List<Sort.Order> sorts = new ArrayList<>();
 
@@ -142,7 +142,7 @@ public class UserServiceImpl implements UserService {
         log.info("User deleted has userId = {}", userId);
     }
 
-    private User getUserById(String userId){
+    public User getUserById(String userId){
         return userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
     }
 }
